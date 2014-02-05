@@ -346,6 +346,8 @@
     text-transform: lowercase; }
   .i18n-easy .text-center {
     text-align: center; }
+  .i18n-easy .inline-block {
+    display: inline-block; }
   .i18n-easy .stretch {
     width: 100%; }
   .i18n-easy .hidden {

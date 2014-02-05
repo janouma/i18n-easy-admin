@@ -34,6 +34,7 @@ Meteor.startup ->
 			wrongFileType: "wrong file type"
 			resourceForbidden: "access forbidden"
 			resourceForbiddenBody: "you are not allowed to access this resource"
+			noSection: "no section"
 
 		fr:
 			add: "ajouter"
@@ -72,4 +73,5 @@ Meteor.startup ->
 			wrongFileType: "le fichier n'est pas du type attendu"
 			resourceForbidden: "accès non-autorisé"
 			resourceForbiddenBody: "vous n'êtes pas autorisé à accéder à cette ressource"
+			noSection: "aucune section"
 	}

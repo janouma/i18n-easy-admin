@@ -20,6 +20,8 @@ Package.on_use(function(api, where){
 	clientFiles.push('client/view/i18n_easy_layout.coffee');
 	clientFiles.push('client/view/i18n_easy_translation.html');
 	clientFiles.push('client/view/i18n_easy_translation.coffee');
+	clientFiles.push('client/view/i18n_easy_sections.html');
+	clientFiles.push('client/view/i18n_easy_sections.coffee');
 	clientFiles.push('client/view/i18n_easy_admin.html');
 	clientFiles.push('client/view/i18n_easy_admin.coffee');
 	clientFiles.push('client/view/i18n_easy_forbidden.html');
