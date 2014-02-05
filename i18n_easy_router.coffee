@@ -31,11 +31,16 @@ Router.map ->
 				{}
 				sort:
 					language: 1
+					section: 1
 					key: 1
 			).forEach (document)->
 				if document.language?.length and document.key?.length and document.message?.length
 					language = translations[document.language] ?= {}
-					language[document.key] = document.message
+					if document.section?.length
+						section = language[document.section] ?= {}
+						section[document.key] = document.message
+					else
+						language[document.key] = document.message
 
 			@response.write JSON.stringify(translations)
 			do @response.end
