@@ -2,9 +2,9 @@
 	<div class="col">
 		<div class="cell tags">
 			<ul class="nav blocks mhm">
-				<li><a href="#" class="capitalize theme-magenta color-bloodywhite animated"><i class="fa fa-chain-broken"></i> {{i18nDefault 'noSection'}}</a></li>
+				<li><a href="{{pathFor 'i18n_easy_admin'}}" class="capitalize {{clazz undefined}} animated"><i class="fa fa-chain-broken"></i> {{i18nDefault 'noSection'}}</a></li>
 				{{#each sections}}
-				<li><a href="#" class="capitalize theme-ash color-lightmagenta animated">{{this}}</a></li>
+				<li><a href="{{pathFor 'i18n_easy_admin'}}/{{this}}" class="capitalize {{clazz this}} animated">{{this}}</a></li>
 				{{/each}}
 			</ul>
 		</div>

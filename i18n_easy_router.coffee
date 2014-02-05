@@ -2,7 +2,7 @@ Router.map ->
 	@route(
 		'i18n_easy_admin'
 		where: 'client'
-		path: '/:language?/i18n-easy-admin'
+		path: '/:language?/i18n-easy-admin/:section?'
 		layoutTemplate: 'i18n_easy_layout'
 
 		before: ->
