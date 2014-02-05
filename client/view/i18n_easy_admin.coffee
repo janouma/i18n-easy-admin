@@ -2,6 +2,7 @@ templateName = 'i18n_easy_admin'
 
 Template[templateName].helpers {
 	submitMessage: -> Alert.message()
+	translations: -> I18nEasy.translations(Router.current().params.section)
 }
 
 
