@@ -13,6 +13,13 @@ Template[templateName].events {
 
 		translations = []
 
+		if Router.current().params.section
+			addSectionIfAny = (document)->
+				document.section = Router.current().params.section
+				document
+		else
+			addSectionIfAny = (document)-> document
+
 		$('[id^=translation_]').each ->
 			message = undefined
 
@@ -28,11 +35,13 @@ Template[templateName].events {
 				message = singularValue if singularValue isnt $singular.attr('data-initial-value')
 
 			if message
-				translations.push {
-					key: $(@).attr 'data-key'
-					language: I18nEasy.getLanguage()
-					message: message
-				}
+				translations.push(
+					addSectionIfAny {
+						key: $(@).attr 'data-key'
+						language: I18nEasy.getLanguage()
+						message: message
+					}
+				)
 
 		if translations.length
 			Alert.info 'processing'
