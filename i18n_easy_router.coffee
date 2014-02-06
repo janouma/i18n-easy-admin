@@ -16,7 +16,9 @@ Router.map ->
 				@render 'i18n_easy_forbidden'
 
 
-		waitOn: -> do I18nEasy.subscribeForTranslation
+		waitOn: ->
+			options = {sections: [@params.section]} if @params.section
+			I18nEasy.subscribeForTranslation options
 	)
 
 	@route(
