@@ -21,18 +21,14 @@ Template[templateName].events {
 			addSectionIfAny = (document)-> document
 
 		$('[id^=translation_]').each ->
-			message = undefined
-
 			$singular = $(@).find '[name=singular]'
 			singularValue = $.trim $singular.val()
 
 			$plural = $(@).find '[name=plural]'
 			pluralValue = $.trim $plural.val()
 
-			if pluralValue isnt $plural.attr('data-initial-value')
-				message = [singularValue, pluralValue]
-			else
-				message = singularValue if singularValue isnt $singular.attr('data-initial-value')
+			if singularValue isnt $singular.attr('data-initial-value') or pluralValue isnt $plural.attr('data-initial-value')
+				message = if pluralValue?.length then [singularValue, pluralValue] else singularValue
 
 			if message
 				translations.push(
