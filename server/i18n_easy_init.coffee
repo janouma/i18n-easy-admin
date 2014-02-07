@@ -38,6 +38,9 @@ Meteor.startup ->
 				noSection: "no section"
 
 		fr:
+			en: "english"
+			fr: "français"
+
 			i18n_easy_admin:
 				add: "ajouter"
 				cancel: "annuler"
@@ -46,9 +49,7 @@ Meteor.startup ->
 				download: "télécharger"
 				duplicatedKey: "la clé existe déjà"
 				duplicatedLanguage: "la langue existe déjà"
-				en: "english"
 				export: "export"
-				fr: "français"
 				import: "import"
 				internalServerError: "une erreur est survenue côté serveur"
 				newKey: "nouvelle clé"
