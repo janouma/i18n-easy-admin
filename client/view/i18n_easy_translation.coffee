@@ -41,10 +41,12 @@ Template[templateName].events {
 
 		$(template.find '.ask').addClass 'hidden'
 
+		parameters = [$(template.find 'div[data-key]').attr('data-key')]
+		parameters.push(Router.current().params.section) if Router.current().params.section
+
 		Meteor.call(
 			'i18nEasyRemoveKey'
-			$(template.find 'div[data-key]').attr('data-key')
-
+			parameters...
 			(error)->
 				if error
 					Alert.error 'internalServerError'
