@@ -62,9 +62,12 @@ Template[templateName].events {
 
 		Alert.info 'processing'
 
+		parameters = [$.trim $newKeyInput.val()]
+		parameters.push(Router.current().params.section) if Router.current().params.section
+
 		Meteor.call(
 			'i18nEasyAddKey'
-			$.trim $newKeyInput.val()
+			parameters...
 			(error)->
 				if error
 					Alert.error(if error.error is 409 then 'duplicatedKey' else 'internalServerError')
