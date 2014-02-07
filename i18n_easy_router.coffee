@@ -17,7 +17,8 @@ Router.map ->
 
 
 		waitOn: ->
-			options = {sections: [@params.section]} if @params.section
+			options = {sections: [@route.name]}
+			options.sections.push @params.section if @params.section
 			I18nEasy.subscribeForTranslation options
 	)
 
