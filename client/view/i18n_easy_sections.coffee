@@ -1,5 +1,11 @@
 templateName = 'i18n_easy_sections'
 
+submit = ->
+	$newSectionInput = $('#newSection')
+	section = $.trim $newSectionInput.val()
+	Router.go 'i18n_easy_admin', section: section
+	Alert.warning 'addOneKeyAtLeast'
+
 Template[templateName].helpers {
 	sections: -> do I18nEasy.getSections
 	section: -> Router.current().params.section
@@ -21,9 +27,8 @@ Template[templateName].events {
 			$addButton.addClass('disabled color-silver').removeClass('color-magenta')
 
 	#==================================
-	'click #addSection:not(.disabled)': ->
-		$newSectionInput = $('#newSection')
-		section = $.trim $newSectionInput.val()
-		Router.go 'i18n_easy_admin', section: section
-		Alert.success 'addOneKeyAtLeast'
+	'keypress #newSection': (e)-> do submit if e.key is 'enter' or e.keyCode is 13
+
+	#==================================
+	'click #addSection:not(.disabled)': -> do submit
 }
