@@ -19,4 +19,11 @@ Template[templateName].events {
 			$addButton.addClass('color-magenta').removeClass('disabled color-silver')
 		else
 			$addButton.addClass('disabled color-silver').removeClass('color-magenta')
+
+	#==================================
+	'click #addSection:not(.disabled)': ->
+		$newSectionInput = $('#newSection')
+		section = $.trim $newSectionInput.val()
+		Router.go 'i18n_easy_admin', section: section
+		Alert.success 'addOneKeyAtLeast'
 }

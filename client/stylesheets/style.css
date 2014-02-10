@@ -333,8 +333,7 @@
   .i18n-easy .disabled, .i18n-easy .stealth {
     cursor: not-allowed !important; }
   .i18n-easy .stealth {
-    border-color: #d9afcf;
-    border-style: dashed; }
+    box-shadow: inset 0 0 10px #aa5093, 0 0 10px #aa5093; }
   .i18n-easy .no-box-shadow {
     box-shadow: none; }
   .i18n-easy .no-text-decoration, .i18n-easy .no-text-decoration:hover {
@@ -515,7 +514,7 @@
     .i18n-easy #addSection .fa {
       margin-left: -25px; }
   .i18n-easy #newSection {
-    height: 19px; }
+    height: 17px; }
   @media (min-device-width: 1600px) {
     .i18n-easy .site-body {
       min-height: 840px; } }

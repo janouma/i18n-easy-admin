@@ -7,11 +7,11 @@
 				<li class="blocks"><a href="{{pathFor 'i18n_easy_admin'}}/{{this}}" class="capitalize {{clazz this}} animated">{{this}}</a></li>
 				{{/each}}
 				{{#if newSection}}
-				<li class="blocks"><a class="capitalize bras stealth" title="{{i18nDefault 'addOneKeyAtLeast'}}">{{section}}</a></li>
+				<li class="blocks"><a class="capitalize theme-grey color-magenta stealth" title="{{i18nDefault 'addOneKeyAtLeast'}}">{{section}}</a></li>
 				{{/if}}
 				{{#unless newSection}}
 				<li>
-					<input type="text" id="newSection" placeholder="{{i18nDefault 'newSection'}}" class="text bran medium-radius fatty">
+					<input type="text" id="newSection" placeholder="{{i18nDefault 'newSection'}}" class="text medium-radius fatty">
 					<a id="addSection" class="phn pull-right color-silver animated disabled" title="{{i18nDefault 'add'}}"><i class="fa fa-plus-circle fa-2x"></i></a>
 				</li>
 				{{/unless}}
