@@ -2,7 +2,7 @@ templateName = 'i18n_easy_sections'
 
 check = (val)-> val?.length and /^\w+$/.test val
 
-submit = -> # TODO check input first
+submit = ->
 	$newSectionInput = $('#newSection')
 	section = $.trim $newSectionInput.val()
 	Router.go 'i18n_easy_admin', section: section

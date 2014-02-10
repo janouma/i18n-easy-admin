@@ -1,5 +1,26 @@
 templateName = 'i18n_easy_admin'
 
+checkKey = (val)-> val?.length and /^\w+$/.test val
+
+submitKey = ->
+	$newKeyInput = $('#newKey')
+
+	Alert.info 'processing'
+
+	parameters = [$.trim $newKeyInput.val()]
+	parameters.push(Router.current().params.section) if Router.current().params.section
+
+	Meteor.call(
+		'i18nEasyAddKey'
+		parameters...
+		(error)->
+			if error
+				Alert.error(if error.error is 409 then 'duplicatedKey' else 'internalServerError')
+			else
+				Alert.success 'successful'
+	)
+
+
 Template[templateName].helpers {
 	submitMessage: -> Alert.message()
 	translations: -> I18nEasy.translations(Router.current().params.section)
@@ -57,32 +78,22 @@ Template[templateName].events {
 	#==================================
 	'click #add:not(.disabled)': (e)->
 		do e.preventDefault
-
-		$newKeyInput = $('#newKey')
-
-		Alert.info 'processing'
-
-		parameters = [$.trim $newKeyInput.val()]
-		parameters.push(Router.current().params.section) if Router.current().params.section
-
-		Meteor.call(
-			'i18nEasyAddKey'
-			parameters...
-			(error)->
-				if error
-					Alert.error(if error.error is 409 then 'duplicatedKey' else 'internalServerError')
-				else
-					Alert.success 'successful'
-		)
+		do submitKey if checkKey $('#newKey').val().trim()
 
 	#==================================
 	'input #newKey': (e)->
 		$addButton = $('#add')
 
-		if /^\w+$/.test $(e.target).val().trim()
+		if checkKey $(e.target).val().trim()
 			$addButton.addClass('color-magenta').removeClass('disabled color-silver')
 		else
 			$addButton.addClass('disabled color-silver').removeClass('color-magenta')
+
+	#==================================
+	'keypress #newKey': (e)->
+		if (e.key is 'enter' or e.keyCode is 13)
+			do e.preventDefault
+			do submitKey if checkKey $(e.target).val().trim()
 }
 
 
