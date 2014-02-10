@@ -1,6 +1,6 @@
 templateName = 'i18n_easy_sections'
 
-check = (val)-> /^\w+$/.test val
+check = (val)-> val?.length and /^\w+$/.test val
 
 submit = -> # TODO check input first
 	$newSectionInput = $('#newSection')
@@ -11,7 +11,7 @@ submit = -> # TODO check input first
 Template[templateName].helpers {
 	sections: -> do I18nEasy.getSections
 	section: -> Router.current().params.section
-	newSection: -> Router.current().params.section?.length and Router.current().params.section not in I18nEasy.getSections()
+	newSection: -> check(Router.current().params.section) and Router.current().params.section not in I18nEasy.getSections()
 	clazz: (section)->
 		if section is Router.current().params.section
 			'theme-magenta color-bloodywhite'
