@@ -1,6 +1,8 @@
 templateName = 'i18n_easy_sections'
 
-submit = ->
+check = (val)-> /^\w+$/.test val
+
+submit = -> # TODO check input first
 	$newSectionInput = $('#newSection')
 	section = $.trim $newSectionInput.val()
 	Router.go 'i18n_easy_admin', section: section
@@ -21,13 +23,13 @@ Template[templateName].events {
 	'input #newSection': (e)->
 		$addButton = $('#addSection')
 
-		if /^\w+$/.test $(e.target).val().trim()
+		if check $(e.target).val().trim()
 			$addButton.addClass('color-magenta').removeClass('disabled color-silver')
 		else
 			$addButton.addClass('disabled color-silver').removeClass('color-magenta')
 
 	#==================================
-	'keypress #newSection': (e)-> do submit if e.key is 'enter' or e.keyCode is 13
+	'keypress #newSection': (e)-> do submit if (e.key is 'enter' or e.keyCode is 13) and check $(e.target).val().trim()
 
 	#==================================
 	'click #addSection:not(.disabled)': -> do submit
