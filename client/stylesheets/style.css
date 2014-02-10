@@ -505,10 +505,17 @@
       .i18n-easy .new-language-ghost:hover ~ a .legend,
       .i18n-easy .new-language-ghost:focus ~ a .legend {
         color: #707070; }
-  .i18n-easy #add {
-    display: inline-block;
+  .i18n-easy .add-key, .i18n-easy #addSection {
+    display: inline-block; }
+  .i18n-easy .add-key {
     margin-left: -31px;
     padding-bottom: 1px; }
+  .i18n-easy #addSection {
+    padding-top: 1px; }
+    .i18n-easy #addSection .fa {
+      margin-left: -25px; }
+  .i18n-easy #newSection {
+    height: 19px; }
   @media (min-device-width: 1600px) {
     .i18n-easy .site-body {
       min-height: 840px; } }

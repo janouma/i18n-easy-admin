@@ -1,14 +1,20 @@
 <template name="i18n_easy_sections">
 	<div class="col">
 		<div class="cell tags">
-			<ul class="nav blocks mhm">
-				<li><a href="{{pathFor 'i18n_easy_admin'}}" class="capitalize {{clazz undefined}} animated"><i class="fa fa-chain-broken"></i> {{i18nDefault 'noSection'}}</a></li>
+			<ul class="nav mhm">
+				<li class="blocks"><a href="{{pathFor 'i18n_easy_admin'}}" class="capitalize {{clazz undefined}} animated"><i class="fa fa-chain-broken"></i> {{i18nDefault 'noSection'}}</a></li>
 				{{#each sections}}
-				<li><a href="{{pathFor 'i18n_easy_admin'}}/{{this}}" class="capitalize {{clazz this}} animated">{{this}}</a></li>
+				<li class="blocks"><a href="{{pathFor 'i18n_easy_admin'}}/{{this}}" class="capitalize {{clazz this}} animated">{{this}}</a></li>
 				{{/each}}
 				{{#if newSection}}
-				<li><a class="capitalize bras stealth" title="{{i18nDefault 'addOneKeyAtLeast'}}">{{section}}</a></li>
+				<li class="blocks"><a class="capitalize bras stealth" title="{{i18nDefault 'addOneKeyAtLeast'}}">{{section}}</a></li>
 				{{/if}}
+				{{#unless newSection}}
+				<li>
+					<input type="text" id="newSection" placeholder="{{i18nDefault 'newSection'}}" class="text bran medium-radius fatty">
+					<a id="addSection" class="phn pull-right color-silver animated disabled" title="{{i18nDefault 'add'}}"><i class="fa fa-plus-circle fa-2x"></i></a>
+				</li>
+				{{/unless}}
 			</ul>
 		</div>
 	</div>

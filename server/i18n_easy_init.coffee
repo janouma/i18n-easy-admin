@@ -37,6 +37,7 @@ Meteor.startup ->
 				resourceForbiddenBody: "you are not allowed to access this resource"
 				noSection: "no section"
 				addOneKeyAtLeast: "one key at least is required"
+				newSection: "new section"
 
 		fr:
 			en: "english"
@@ -79,4 +80,5 @@ Meteor.startup ->
 				resourceForbiddenBody: "vous n'êtes pas autorisé à accéder à cette ressource"
 				noSection: "aucune section"
 				addOneKeyAtLeast: "une clé au moins est requise"
+				newSection: "nouvelle section"
 	}
