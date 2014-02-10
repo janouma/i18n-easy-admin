@@ -1,5 +1,24 @@
 templateName = 'i18n_easy_nav'
 
+checkLanguage = (val)-> val?.length and /^\w{2}$/.test val
+
+submitLanguage = (template)->
+	$newLanguage = $(template.find '.new-language')
+
+	Meteor.call(
+		'i18nEasyAddLanguage'
+		$newLanguage.val().trim()
+
+		(error)->
+			if error
+				Alert.error(if error.error is 409 then 'duplicatedLanguage' else 'internalServerError')
+				$newLanguage.val ''
+				$(template.find '.new-language-wrapper').removeClass 'active'
+			else
+				Alert.success 'successful'
+	)
+
+
 Template[templateName].helpers {
 	languages: ->
 		do I18nEasy.getLanguages
@@ -26,27 +45,16 @@ Template[templateName].events {
 		$wrapper = $(template.find '.new-language-wrapper')
 		activeClass = 'active'
 
-		if /^\w{2}$/.test $(e.target).val().trim()
+		if checkLanguage $(e.target).val().trim()
 			$wrapper.addClass activeClass
 		else
 			$wrapper.removeClass activeClass
 
 	#==================================
-	'click .active .add-language': (e, template)->
-		$newLanguage = $(template.find '.new-language')
+	'click .active .add-language': (e, template)-> submitLanguage template
 
-		Meteor.call(
-			'i18nEasyAddLanguage'
-			$.trim $newLanguage.val()
-
-			(error)->
-				if error
-					Alert.error(if error.error is 409 then 'duplicatedLanguage' else 'internalServerError')
-					$newLanguage.val ''
-					$(template.find '.new-language-wrapper').removeClass 'active'
-				else
-					Alert.success 'successful'
-		)
+	#==================================
+	'keypress .new-language': (e, template)-> do submitLanguage(template) if (e.key is 'enter' or e.keyCode is 13) and checkLanguage $(e.target).val().trim()
 
 	#==================================
 	'click .delete': (e, template)->
