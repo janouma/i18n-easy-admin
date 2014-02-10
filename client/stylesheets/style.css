@@ -330,8 +330,11 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       -webkit-user-select: none; }
-  .i18n-easy .disabled {
+  .i18n-easy .disabled, .i18n-easy .stealth {
     cursor: not-allowed !important; }
+  .i18n-easy .stealth {
+    border-color: #d9afcf;
+    border-style: dashed; }
   .i18n-easy .no-box-shadow {
     box-shadow: none; }
   .i18n-easy .no-text-decoration, .i18n-easy .no-text-decoration:hover {

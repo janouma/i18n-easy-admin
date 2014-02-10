@@ -6,6 +6,9 @@
 				{{#each sections}}
 				<li><a href="{{pathFor 'i18n_easy_admin'}}/{{this}}" class="capitalize {{clazz this}} animated">{{this}}</a></li>
 				{{/each}}
+				{{#if newSection}}
+				<li><a class="capitalize bras stealth" title="{{i18nDefault 'addOneKeyAtLeast'}}">{{section}}</a></li>
+				{{/if}}
 			</ul>
 		</div>
 	</div>
