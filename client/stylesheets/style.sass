@@ -1,10 +1,10 @@
-@import "bourbon/bourbon"
-@import "colors"
+@import bourbon/bourbon
+@import _colors
 
 .i18n-easy
-	@import "borders"
-	@import "spaces"
-	@import "fontawesome-extension"
+	@import _borders
+	@import _spaces
+	@import _fontawesome-extension
 
 	.tiny
 		@extend .color-magenta
@@ -51,6 +51,9 @@
 			-moz-osx-font-smoothing: grayscale
 			-webkit-user-select: none
 
+	.button-like
+		cursor: pointer
+
 	.disabled
 		cursor: not-allowed !important
 
@@ -92,6 +95,10 @@
 	.hidden
 		opacity: 0
 		visibility: hidden
+
+	.visible
+		opacity: 1
+		visibility: visible
 
 	.animated
 		+transition-duration(0.5s)
@@ -164,6 +171,7 @@
 		border-top-width: 0
 		@extend .z1
 
+
 	#submit-result
 		width: 85%
 		position: fixed
@@ -191,8 +199,7 @@
 
 		&:hover
 			.delete
-				opacity: 1
-				visibility: visible
+				@extend .visible
 
 	.main-nav
 		.delete,
@@ -203,8 +210,7 @@
 
 		a:hover
 			.delete
-				opacity: 1
-				visibility: visible
+				@extend .visible
 
 		.ask,
 		.ask-ghost
@@ -218,6 +224,22 @@
 
 			&::before
 				border-bottom-color: $border-color
+
+	.sections
+		.delete
+			position: absolute
+			top: 0
+			right: 0
+			line-height: 27px
+			background-color: $lightash
+
+		.active
+			.delete
+				background-color: $clearmagenta
+
+		a:hover
+			.delete
+				@extend .visible
 
 	.upload-form,
 	.upload-form-ghost

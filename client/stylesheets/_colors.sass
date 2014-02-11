@@ -1,10 +1,12 @@
 $ash: #505050
+$lightash: lighten($ash, 10%)
 $dust: #707070
 $neardark: #333
 $grey: darken(#F7F7F9, 2%)
 $darkgrey: darken($grey, 15%)
 $header-color: $neardark
 $magenta: #aa5093
+$clearmagenta: lighten($magenta, 20%)
 $lightmagenta: lighten($magenta, 28%)
 $smoke: #f0f0f0
 $darkpink: #be0158
@@ -22,7 +24,7 @@ $flour: #f7f7f9
 	.color-#{$name}
 		&, a
 			color: $main !important
-		&.input[type=submit]:hover, &.button:hover, a:hover
+		&.input[type=submit]:hover, &.button:hover, a:hover, .button-like:hover
 			color: $hover !important
 		.active, &.active
 			&, a
@@ -39,7 +41,8 @@ $flour: #f7f7f9
 
 	input[type=submit].theme-#{$name}:hover,
 	a.theme-#{$name}:hover,
-	.button.theme-#{$name}:hover
+	.button.theme-#{$name}:hover,
+	.button-like.theme-#{$name}:hover
 		background-color: $hover !important
 		border-color: darken($hover, 5%) !important
 
@@ -52,7 +55,7 @@ $flour: #f7f7f9
 	.gradient-deepspace
 		+background-image(linear-gradient(darken($header-color, 7.5%) 10%, rgba($header-color, 0.95) 65%, rgba($header-color, 0.85)))
 
-	+color('magenta', lighten($magenta, 13%), lighten($magenta, 20%), $lightmagenta)
+	+color('magenta', lighten($magenta, 13%), $clearmagenta, $lightmagenta)
 	+color('lightmagenta', $lightmagenta)
 	+color('bloodywhite', lighten($lightmagenta, 5%))
 	+color('pink', $pink, $darkpink, $darkpink)
@@ -65,12 +68,12 @@ $flour: #f7f7f9
 	+color('ash', $ash)
 
 	+theme('black', $neardark, $ash, black)
-	+theme('ash', $ash, lighten($ash, 10%), $neardark)
+	+theme('ash', $ash, $lightash, $neardark)
 	+theme('grey', $darkgrey)
 	+theme('redlight', lighten($redlight, 10%), $redlight)
 	+theme('emerald', lighten($emerald, 15%))
 	+theme('gold', $gold)
 	+theme('sky', $sky)
 	+theme('silver', $silver)
-	+theme('magenta', lighten($magenta, 10%), lighten($magenta, 20%))
+	+theme('magenta', lighten($magenta, 10%), $clearmagenta)
 

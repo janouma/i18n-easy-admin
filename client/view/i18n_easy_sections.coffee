@@ -12,9 +12,10 @@ Template[templateName].helpers {
 	sections: -> do I18nEasy.getSections
 	section: -> Router.current().params.section
 	newSection: -> check(Router.current().params.section) and Router.current().params.section not in I18nEasy.getSections()
+	default: -> @toString() is Router.current().route.name
 	clazz: (section)->
 		if section is Router.current().params.section
-			'theme-magenta color-bloodywhite'
+			'active theme-magenta color-bloodywhite'
 		else
 			'theme-ash color-lightmagenta'
 }
