@@ -226,8 +226,15 @@
 				border-bottom-color: $border-color
 
 	.sections
+		.ask,
 		.delete
 			position: absolute
+
+		.ask
+			&::before
+				border-bottom-color: $neardark
+
+		.delete
 			top: 0
 			right: 5px
 			line-height: 27px
@@ -303,7 +310,7 @@
 
 	@media (min-device-width: 1600px)
 		.site-body
-			min-height: 840px
+			min-height: 780px
 
 	@media (max-device-width: 1599px)
 		.site-body

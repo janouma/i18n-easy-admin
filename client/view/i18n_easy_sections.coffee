@@ -34,4 +34,39 @@ Template[templateName].events {
 
 	#==================================
 	'click #addSection:not(.disabled)': -> do submit
+
+	#==================================
+	'click .delete': (e, template)->
+		do e.preventDefault
+
+		Meteor.clearTimeout template._toast
+		$ask = $(template.find '.ask')
+		$delete = $(e.target)
+		$link = $delete.parents('a')
+		offset = $link.offset()
+
+		$ask.offset(
+			top: offset.top + $delete.height() - 5
+			left: offset.left + $link.width()/2 - $ask.width()/2 + 20
+		).removeClass('hidden').addClass('visible')
+
+		template._targetedSection = $delete.attr('data-section')
+		template._cancel = no
+
+		template._toast = Meteor.setTimeout(
+			->
+				template._targetedSection = undefined
+				template._cancel = yes
+				$ask.addClass('hidden').removeClass('visible')
+			5000
+		)
+
+	#==================================
+	'click .cancel': (e, template)->
+		do e.preventDefault
+
+		template._targetedSection = undefined
+		template._cancel = yes
+		Meteor.clearTimeout template._toast
+		$(template.find('.ask')).addClass('hidden').removeClass('visible')
 }
