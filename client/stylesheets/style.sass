@@ -103,7 +103,7 @@
 	.animated
 		+transition-duration(0.5s)
 		+transition-timing-function(ease-in-out)
-		+transition-property(color, background-color, opacity, visibility)
+		+transition-property(color, background-color, opacity, visibility, margin, padding)
 
 	.collapse-left
 		&, &.small-radius, &.medium-radius, &.big-radius, &.huge-radius
@@ -229,15 +229,13 @@
 		.delete
 			position: absolute
 			top: 0
-			right: 0
+			right: 5px
 			line-height: 27px
-			background-color: $lightash
-
-		.active
-			.delete
-				background-color: $clearmagenta
 
 		a:hover
+			.section-txt
+				margin-left: -7px
+				margin-right: 7px
 			.delete
 				@extend .visible
 

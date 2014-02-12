@@ -7,9 +7,10 @@
 				{{#each sections}}
 				<li class="blocks mrs">
 					<a href="{{pathFor 'i18n_easy_admin'}}/{{this}}" class="capitalize {{clazz this}} phl animated">
-						{{this}}
+						{{#if default}}{{this}}{{/if}}
 						{{#unless default}}
-						<i class="delete fa fa-trash-o animated z1 medium-radius theme-lightash color-bloodywhite phs collapse-left hidden" title="{{i18nDefault 'delete'}}" data-section="{{this}}"></i>
+						<span class="section-txt animated">{{this}}</span>
+						<i class="delete fa fa-trash-o animated z1 color-bloodywhite phs hidden" title="{{i18nDefault 'delete'}}" data-section="{{this}}"></i>
 						{{/unless}}
 					</a>
 				</li>
