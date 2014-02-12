@@ -5,7 +5,7 @@ check = (val)-> val?.length and /^\w+$/.test val
 submit = ->
 	$newSectionInput = $('#newSection')
 	section = $.trim $newSectionInput.val()
-	Router.go 'i18n_easy_admin', section: section
+	Router.go Router.current().route.name, section: section
 	Alert.warning 'addOneKeyAtLeast'
 
 Template[templateName].helpers {
@@ -69,4 +69,25 @@ Template[templateName].events {
 		template._cancel = yes
 		Meteor.clearTimeout template._toast
 		$(template.find('.ask')).addClass('hidden').removeClass('visible')
+
+	#==================================
+	'click .confirm': (e, template)->
+		do e.preventDefault
+		return if template._cancel
+
+		$(template.find '.ask').addClass('hidden').removeClass('visible')
+
+		if template._targetedSection
+			Meteor.call(
+				'i18nEasyRemoveSection'
+				template._targetedSection
+
+				(error)->
+					if error
+						Alert.error 'internalServerError'
+					else
+						Alert.success 'successful'
+						Router.go(Router.current().route.name) if template._targetedSection is Router.current().params.section
+						template._targetedSection = undefined
+			)
 }
