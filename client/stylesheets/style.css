@@ -39,6 +39,12 @@
   color: #f0f0f0 !important; }
 .i18n-easy .color-smoke .active, .i18n-easy .color-smoke .active a, .i18n-easy .color-smoke.active, .i18n-easy .color-smoke.active a {
   color: #f0f0f0 !important; }
+.i18n-easy .color-red, .i18n-easy .color-red a {
+  color: #ff6000 !important; }
+.i18n-easy .color-red.input[type=submit]:hover, .i18n-easy .color-red.button:hover, .i18n-easy .color-red a:hover, .i18n-easy .color-red .button-like:hover {
+  color: #ff6000 !important; }
+.i18n-easy .color-red .active, .i18n-easy .color-red .active a, .i18n-easy .color-red.active, .i18n-easy .color-red.active a {
+  color: #ff6000 !important; }
 .i18n-easy .color-redlight, .i18n-easy .color-redlight a {
   color: #ff6000 !important; }
 .i18n-easy .color-redlight.input[type=submit]:hover, .i18n-easy .color-redlight.button:hover, .i18n-easy .color-redlight a:hover, .i18n-easy .color-redlight .button-like:hover {
@@ -535,6 +541,11 @@
       margin-left: -25px; }
   .i18n-easy #newSection {
     height: 17px; }
+  .i18n-easy .socialicons {
+    white-space: nowrap; }
+    .i18n-easy .socialicons a {
+      display: inline-block;
+      width: 52px; }
   @media (min-device-width: 1600px) {
     .i18n-easy .site-body {
       min-height: 780px; } }
