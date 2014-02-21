@@ -8,9 +8,6 @@
 	"packages": {
 		"font-awesome": "4.0.3",
 		"iron-router-progress": {},
-		"i18n-easy": {
-			"git": "https://github.com/janouma/i18n-easy.git",
-			"tag": "v0.1.0"
-		}
+		"i18n-easy": {}
 	}
 }
