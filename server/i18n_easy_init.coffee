@@ -2,6 +2,8 @@ Meteor.startup ->
 
 	I18nEasy.mapAll {
 		en:
+			translationAdmin: "translation manager"
+
 			i18n_easy_admin:
 				add: "add"
 				cancel: "cancel"
@@ -24,7 +26,6 @@ Meteor.startup ->
 				save: "save"
 				singular: "singular"
 				successful: "everything went well"
-				translationAdmin: "translation manager"
 
 				unknownError: [
 					"an unknown error occurred"
@@ -42,6 +43,7 @@ Meteor.startup ->
 		fr:
 			en: "english"
 			fr: "français"
+			translationAdmin: "gestionnaire des traductions"
 
 			i18n_easy_admin:
 				add: "ajouter"
@@ -67,7 +69,6 @@ Meteor.startup ->
 				save: "enregistrer"
 				singular: "singulier"
 				successful: "tout s'est bien passé"
-				translationAdmin: "gestionnaire des traductions"
 
 				unknownError:[
 					"une erreur inconnue est survenue"
