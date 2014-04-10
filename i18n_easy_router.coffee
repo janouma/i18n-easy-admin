@@ -5,7 +5,7 @@ Router.map ->
 		path: '/:language?/i18n-easy-admin/:section?'
 		layoutTemplate: 'i18n_easy_layout'
 
-		before: ->
+		onBeforeAction: ->
 			language = @params.language
 
 			if language and I18nEasy.getLanguage() isnt language

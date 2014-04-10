@@ -1,20 +1,26 @@
 collection = new Meteor.Collection null
 
+toast = null
+
 send = (status, key)->
+	Meteor.clearTimeout toast
+
 	collection.remove {}
-	collection.insert {
+	currentMessageId = collection.insert {
 		status: status
 		message: I18nEasy.i18nDefault key
 		path: Router.current().path
 	}
-	module.changed = yes
+
+	toast = Meteor.setTimeout(
+		=> collection.remove _id: currentMessageId
+		5000
+	)
 
 module =
 	message: -> collection.findOne()?.message
 	status: -> collection.findOne()?.status
 	path: -> collection.findOne()?.path
-	changed: no
-	clear: -> @changed = no
 
 
 statuses = [

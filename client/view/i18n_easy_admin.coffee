@@ -7,7 +7,8 @@ submitKey = ->
 
 	Alert.info 'processing'
 
-	parameters = [$.trim $newKeyInput.val()]
+	newKeyValue = $newKeyInput.val().trim()
+	parameters = [newKeyValue]
 	parameters.push(Router.current().params.section) if Router.current().params.section
 
 	Meteor.call(
@@ -17,12 +18,25 @@ submitKey = ->
 			if error
 				Alert.error(if error.error is 409 then 'duplicatedKey' else 'internalServerError')
 			else
+				$newKeyInput.val ''
 				Alert.success 'successful'
 	)
 
 
+statusClasses =
+	info: 'theme-sky color-black'
+	success: 'theme-emerald color-black'
+	warning: 'theme-gold color-black'
+	error: 'theme-redlight color-black'
+
+
 Template[templateName].helpers {
 	submitMessage: -> Alert.message()
+	submitMessageVisibility: -> 'hidden' unless Alert.message()
+	submitMessageStatus: ->
+		status = Alert.status()
+		statusClasses[status] if status
+
 	translations: -> I18nEasy.translations(Router.current().params.section)
 }
 
@@ -44,11 +58,13 @@ Template[templateName].events {
 		$('[id^=translation_]').each ->
 			$singular = $(@).find '[name=singular]'
 			singularValue = $.trim $singular.val()
+			singularInitialValue = $singular.attr('data-initial-value') or ''
 
 			$plural = $(@).find '[name=plural]'
 			pluralValue = $.trim $plural.val()
+			pluralInitialValue = $plural.attr('data-initial-value') or ''
 
-			if singularValue isnt $singular.attr('data-initial-value') or pluralValue isnt $plural.attr('data-initial-value')
+			if singularValue isnt singularInitialValue or pluralValue isnt pluralInitialValue
 				message = if pluralValue?.length then [singularValue, pluralValue] else singularValue
 
 			if message
@@ -95,37 +111,3 @@ Template[templateName].events {
 			do e.preventDefault
 			do submitKey if checkKey $(e.target).val().trim()
 }
-
-
-Template[templateName].rendered = ->
-	return unless Alert.changed
-
-	Meteor.clearTimeout @_toast
-	$messageElts = $('#submit-result, #submit-note')
-
-	showMessage = =>
-		statusClasses =
-			info: 'theme-sky color-black'
-			success: 'theme-emerald color-black'
-			warning: 'theme-gold color-black'
-			error: 'theme-redlight color-black'
-
-		if Alert.status()
-			$messageElts.addClass(statusClasses[Alert.status()])
-				.removeClass 'hidden'
-
-		$('#add').addClass('disabled color-silver').removeClass('color-magenta')
-
-		$('#newKey').val('') if Alert.isSuccess()
-
-	if Alert.path() is Router.current().path
-		Meteor.defer showMessage
-	else
-		showMessage()
-
-	@_toast = Meteor.setTimeout(
-		=>
-			do Alert.clear
-			$messageElts.addClass 'hidden'
-		5000
-	)

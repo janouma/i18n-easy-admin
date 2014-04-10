@@ -4,7 +4,8 @@ Package.describe({
 
 Package.on_use(function(api, where){
 	api.use(['coffeescript', 'minimongo', 'mongo-livedata', 'iron-router']);
-	api.use(['templating', 'handlebars', 'font-awesome'], 'client');
+	//api.use(['templating', 'handlebars', 'font-awesome'], 'client');
+	api.use(['templating', 'ui', 'font-awesome'], 'client');
 
 	var clientFiles = [];
 

@@ -4,10 +4,12 @@ checkLanguage = (val)-> val?.length and /^\w{2}$/.test val
 
 submitLanguage = (template)->
 	$newLanguage = $(template.find '.new-language')
+	newLanguageValue = $newLanguage.val().trim()
+	$newLanguage.val ''
 
 	Meteor.call(
 		'i18nEasyAddLanguage'
-		$newLanguage.val().trim()
+		newLanguageValue
 
 		(error)->
 			if error

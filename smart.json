@@ -3,7 +3,7 @@
 	"description": "Admin ui for i18n-easy",
 	"homepage": "https://github.com/janouma/i18n-easy-admin",
 	"author": "Judicaël Anouma <judicael.anouma@gmail.com>",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"git": "https://github.com/janouma/i18n-easy-admin.git",
 	"packages": {
 		"font-awesome": "4.0.3",

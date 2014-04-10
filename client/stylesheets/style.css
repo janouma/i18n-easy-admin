@@ -192,7 +192,8 @@
   /* spacing helpers
    * p,m = padding,margin
    * a,t,r,b,l,h,v = all,top,right,bottom,left,horizontal,vertical
-   * s,m,l,n = small(5px),medium(10px),large(20px),none(0px) */ }
+   * s,m,l,n = small(5px),medium(10px),large(20px),none(0px) */
+  font-size: 90%; }
   .i18n-easy .brts, .i18n-easy .brvs, .i18n-easy .bras, .i18n-easy .brtm, .i18n-easy .brvm, .i18n-easy .bram, .i18n-easy .brtl, .i18n-easy .brvl, .i18n-easy .bral, .i18n-easy .brrs, .i18n-easy .brhs, .i18n-easy .brrm, .i18n-easy .brhm, .i18n-easy .brrl, .i18n-easy .brhl, .i18n-easy .brbs, .i18n-easy .brbm, .i18n-easy .brbl, .i18n-easy .brls, .i18n-easy .brlm, .i18n-easy .brll {
     border-style: solid;
     border-color: inherit;
@@ -311,6 +312,17 @@
     margin-left: 20px !important; }
   .i18n-easy .fa.fa-10x {
     font-size: 10em; }
+  .i18n-easy * {
+    font-family: "Century Gothic"; }
+  .i18n-easy input,
+  .i18n-easy select,
+  .i18n-easy textarea,
+  .i18n-easy p {
+    font-family: "Century Gothic" !important; }
+  .i18n-easy input[type=text],
+  .i18n-easy input[type=file],
+  .i18n-easy textarea {
+    border-width: 1px; }
   .i18n-easy .tiny-input {
     width: auto;
     height: 11px;
@@ -541,6 +553,8 @@
       margin-left: -25px; }
   .i18n-easy #newSection {
     height: 17px; }
+  .i18n-easy #signature {
+    width: 165px; }
   .i18n-easy .socialicons {
     white-space: nowrap; }
     .i18n-easy .socialicons a {
