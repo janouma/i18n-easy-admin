@@ -1,11 +1,15 @@
 Package.describe({
-	summary: "Admin ui for i18n-easy"
+	summary: "Admin ui for i18n-easy",
+	homepage: "https://github.com/janouma/i18n-easy-admin",
+	author: "Judicaël Anouma <judicael.anouma@gmail.com>",
+	version: "0.1.2",
+	name: "janouma:i18n-easy-admin",
+	git: "https://github.com/janouma/i18n-easy-admin"
 });
 
-Package.on_use(function(api, where){
-	api.use(['coffeescript', 'minimongo', 'mongo-livedata', 'iron-router']);
-	//api.use(['templating', 'handlebars', 'font-awesome'], 'client');
-	api.use(['templating', 'ui', 'font-awesome'], 'client');
+Package.onUse(function(api, where){
+	api.use(['coffeescript', 'minimongo', 'mongo-livedata', 'iron:router', 'janouma:i18n-easy']);
+	api.use(['templating', 'ui', 'natestrauser:font-awesome'], 'client');
 
 	var clientFiles = [];
 
@@ -29,6 +33,6 @@ Package.on_use(function(api, where){
 	clientFiles.push('client/stylesheets/style.css');
 	clientFiles.push('client/stylesheets/build-full-no-icons.min.css');
 
-	api.add_files(clientFiles, 'client');
-	api.add_files(['server/i18n_easy_init.coffee', 'i18n_easy_router.coffee'], 'server');
+	api.addFiles(clientFiles, 'client');
+	api.addFiles(['server/i18n_easy_init.coffee', 'i18n_easy_router.coffee'], 'server');
 });
