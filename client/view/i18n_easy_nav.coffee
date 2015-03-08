@@ -1,4 +1,4 @@
-templateName = 'i18n_easy_nav'
+templateName = 'i18nEasyNav'
 
 checkLanguage = (val)-> val?.length and /^\w{2}$/.test val
 
@@ -115,7 +115,7 @@ Template[templateName].events {
 
 						if template._targetedLanguage is I18nEasy.getLanguage()
 							Router.go(
-								'i18n_easy_admin'
+								'i18nEasyAdmin'
 								language: I18nEasy.getDefault()
 							)
 

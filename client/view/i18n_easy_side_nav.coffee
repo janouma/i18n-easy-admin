@@ -1,4 +1,4 @@
-Template.i18n_easy_side_nav.events {
+Template.i18nEasySideNav.events {
 	'click .upload-link': (e, template)->
 		do e.stopPropagation
 

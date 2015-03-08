@@ -1,18 +1,18 @@
-templateName = 'i18n_easy_sections'
+templateName = 'i18nEasySections'
 
 check = (val)-> val?.length and /^\w+$/.test val
 
 submit = ->
 	$newSectionInput = $('#newSection')
 	section = $.trim $newSectionInput.val()
-	Router.go Router.current().route.name, section: section
+	Router.go Router.current().route.getName(), section: section
 	Alert.warning 'addOneKeyAtLeast'
 
 Template[templateName].helpers {
 	sections: -> do I18nEasy.getSections
 	section: -> Router.current().params.section
 	newSection: -> check(Router.current().params.section) and Router.current().params.section not in I18nEasy.getSections()
-	default: -> @toString() is Router.current().route.name
+	default: -> @toString() is Router.current().route.getName()
 	clazz: (section)->
 		if section is Router.current().params.section
 			'active theme-magenta color-bloodywhite'
@@ -87,7 +87,7 @@ Template[templateName].events {
 						Alert.error 'internalServerError'
 					else
 						Alert.success 'successful'
-						Router.go(Router.current().route.name) if template._targetedSection is Router.current().params.section
+						Router.go(Router.current().route.getName()) if template._targetedSection is Router.current().params.section
 						template._targetedSection = undefined
 			)
 }

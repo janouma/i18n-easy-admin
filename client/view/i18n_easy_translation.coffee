@@ -1,4 +1,4 @@
-templateName = 'i18n_easy_translation'
+templateName = 'i18nEasyTranslation'
 
 Template[templateName].helpers {
 	emptyWarningClass: (translation)-> 'label theme-gold color-black' unless translation?.length

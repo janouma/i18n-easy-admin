@@ -1,4 +1,4 @@
-templateName = 'i18n_easy_admin'
+templateName = 'i18nEasyAdmin'
 
 checkKey = (val)-> val?.length and /^\w+$/.test val
 

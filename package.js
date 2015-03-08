@@ -2,7 +2,7 @@ Package.describe({
 	summary: "Admin ui for i18n-easy",
 	homepage: "https://github.com/janouma/i18n-easy-admin",
 	author: "Judicaël Anouma <judicael.anouma@gmail.com>",
-	version: "0.1.2",
+	version: "0.1.3",
 	name: "janouma:i18n-easy-admin",
 	git: "https://github.com/janouma/i18n-easy-admin"
 });
